@@ -5,7 +5,11 @@ import { Form, FormLabel, FormInput, FormButton } from './ContactForm.styled';
 export class ContactForm extends Component {
   static propTypes = {
     addContact: PropTypes.func.isRequired,
-    contacts: PropTypes.array.isRequired,
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      })
+    ),
   };
 
   state = {
