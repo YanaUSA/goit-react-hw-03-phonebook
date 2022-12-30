@@ -26,7 +26,7 @@ export class ContactForm extends Component {
     // console.log('contacts', contacts);
     // console.log('filter', { ...this.state });
 
-    // if ([contacts].name.find(this.state.name)) {
+    // if (contacts.name.find(this.state.name)) {
     //   console.log('contacts in ifffff', contacts);
     //   return;
     // } else {

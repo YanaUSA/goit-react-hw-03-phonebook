@@ -19,20 +19,22 @@ export class App extends Component {
 
   componentDidMount() {
     const { contacts } = this.state;
-    console.log('componentDidMount');
     const contactUserList =
       JSON.parse(localStorage.getItem('contacts')) ?? contacts;
 
-    console.log(contactUserList);
     this.setState({ contacts: contactUserList });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-    console.log('prevProps', prevProps);
-    console.log('prevState', prevState);
+  componentDidUpdate(prevState) {
+    const { contacts } = this.state;
 
-    if (this.state.contacts) localStorage.setItem('contacts');
+    if (prevState.contacts.length !== contacts.length) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+
+    if (contacts.length === 0) {
+      localStorage.removeItem('contacts');
+    }
   }
 
   addContact = obj => {
