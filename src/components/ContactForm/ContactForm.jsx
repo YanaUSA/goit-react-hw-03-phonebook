@@ -20,7 +20,7 @@ export class ContactForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { addContact, contacts } = this.props;
+    const { addContact } = this.props;
     addContact({ ...this.state });
 
     // console.log('contacts', contacts);
