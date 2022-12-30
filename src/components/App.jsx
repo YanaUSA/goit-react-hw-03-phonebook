@@ -25,7 +25,7 @@ export class App extends Component {
     this.setState({ contacts: contactUserList });
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
 
     if (prevState.contacts.length !== contacts.length) {
@@ -44,7 +44,7 @@ export class App extends Component {
       ...obj,
     };
 
-    contacts.find(({ name }) => name === obj.name)
+    contacts.find(({ name }) => name.toLowerCase() === obj.name.toLowerCase())
       ? alert(`${obj.name} is already in contacts`)
       : this.setState(prevState => ({
           contacts: [...prevState.contacts, newContact],

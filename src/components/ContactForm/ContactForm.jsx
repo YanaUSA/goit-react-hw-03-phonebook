@@ -5,6 +5,7 @@ import { Form, FormLabel, FormInput, FormButton } from './ContactForm.styled';
 export class ContactForm extends Component {
   static propTypes = {
     addContact: PropTypes.func.isRequired,
+    contacts: PropTypes.array.isRequired,
   };
 
   state = {
@@ -20,18 +21,18 @@ export class ContactForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { addContact } = this.props;
+    const { addContact, contacts } = this.props;
+    const { name } = this.state;
+
     addContact({ ...this.state });
 
-    // console.log('contacts', contacts);
-    // console.log('filter', { ...this.state });
-
-    // if (contacts.name.find(this.state.name)) {
-    //   console.log('contacts in ifffff', contacts);
-    //   return;
-    // } else {
-    //   this.resetForm();
-    // }
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return;
+    }
 
     this.resetForm();
   };
