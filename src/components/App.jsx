@@ -32,9 +32,9 @@ export class App extends Component {
       localStorage.setItem('contacts', JSON.stringify(contacts));
     }
 
-    if (contacts.length === 0) {
-      localStorage.removeItem('contacts');
-    }
+    // if (contacts.length === 0) {
+    //   localStorage.removeItem('contacts');
+    // }
   }
 
   addContact = obj => {
