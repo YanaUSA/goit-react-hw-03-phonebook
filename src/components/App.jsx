@@ -29,16 +29,12 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     const { contacts } = this.state;
 
     if (prevState.contacts.length !== contacts.length) {
       localStorage.setItem('contacts', JSON.stringify(contacts));
     }
-
-    // if (contacts.length === 0) {
-    //   localStorage.removeItem('contacts');
-    // }
   }
 
   addContact = obj => {
